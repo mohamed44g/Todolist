@@ -1,0 +1,344 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+}
+
+.background {
+  width: 100%;
+  height: 300px;
+  background-image: url(../images/bg-desktop-light.jpg);
+  position: absolute;
+  z-index: -1;
+}
+.background .background-overlay {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  z-index: 1;
+  background-color: black;
+  opacity: 0.3;
+}
+
+.tasks-div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.to-do-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: absolute;
+  top: 100px;
+  z-index: 1;
+  width: 35%;
+}
+.to-do-container .to-do-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+.to-do-container .to-do-header h1 {
+  color: hsl(0deg, 0%, 98%);
+  text-transform: uppercase;
+  letter-spacing: 12px;
+  font-weight: 700;
+}
+.to-do-container .Theme-toggle {
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  cursor: pointer;
+}
+.to-do-container .Theme-toggle img {
+  width: 30px;
+}
+.to-do-container .add-task {
+  margin-top: 35px;
+}
+.to-do-container .add-task #addTask {
+  width: 100%;
+  height: 60px;
+  border-color: hsl(0deg, 0%, 98%);
+  border-radius: 5px;
+  padding: 15px;
+  color: black;
+  font-size: 20px;
+}
+.to-do-container .to-do-tasks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 5px;
+}
+.to-do-container .to-do-tasks .task {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  padding: 20px;
+  border-bottom: 1px solid rgba(119, 122, 146, 0.3);
+  cursor: pointer;
+}
+.to-do-container .to-do-tasks .task .task-check {
+  position: relative;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+.to-do-container .to-do-tasks .task .task-check #checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border-radius: 12.5px;
+  border: 1px solid rgba(51, 51, 51, 0.3);
+  cursor: pointer;
+}
+.to-do-container .to-do-tasks .task .task-check #checkbox:hover {
+  border: 1px solid hsl(220deg, 98%, 61%);
+}
+.to-do-container .to-do-tasks .task .task-text {
+  -webkit-box-flex: 10;
+  -ms-flex-positive: 10;
+  flex-grow: 10;
+}
+.to-do-container .to-do-tasks .task .task-text h5 {
+  color: hsl(234deg, 11%, 52%);
+  font-weight: 400;
+}
+.to-do-container .to-do-tasks .task .delete-task {
+  visibility: hidden;
+}
+.to-do-container .to-do-tasks .task:hover .delete-task {
+  visibility: visible;
+}
+.to-do-container .to-do-tasks .to-do-tasks-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 20px;
+}
+.to-do-container .to-do-tasks .to-do-tasks-footer .task-left,
+.to-do-container .to-do-tasks .to-do-tasks-footer .clear-completed-btn,
+.to-do-container .to-do-tasks .to-do-tasks-footer .task-veiwed li {
+  color: hsl(234deg, 11%, 52%);
+}
+.to-do-container .to-do-tasks .to-do-tasks-footer .task-veiwed {
+  list-style: none;
+}
+.to-do-container .to-do-tasks .to-do-tasks-footer .task-veiwed li {
+  display: inline-block;
+  font-weight: 500;
+}
+.to-do-container .to-do-tasks .to-do-tasks-footer .task-veiwed li:hover {
+  color: black;
+}
+.to-do-container
+  .to-do-tasks
+  .to-do-tasks-footer
+  .task-veiwed
+  li:nth-of-type(2) {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+.to-do-container .task-veiwed-mobile {
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: 30px;
+  border-radius: 5 px;
+  display: none;
+  list-style: none;
+}
+.to-do-container .task-veiwed-mobile li {
+  display: inline-block;
+  color: hsl(234deg, 11%, 52%);
+  font-weight: 700;
+}
+.to-do-container .task-veiwed-mobile li:nth-of-type(2) {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.veiw-active {
+  color: hsl(220deg, 98%, 61%) !important;
+}
+
+footer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+footer .attribution a {
+  text-decoration: none;
+}
+
+#dark {
+  background-color: hsl(235deg, 21%, 11%);
+}
+#dark .background {
+  background-image: url(../images/bg-desktop-dark.jpg);
+}
+#dark #addTask {
+  border-color: transparent !important;
+  color: hsl(0deg, 0%, 98%) !important;
+}
+#dark #addTask::-webkit-input-placeholder {
+  color: hsl(0deg, 0%, 98%) !important;
+}
+#dark #addTask::-moz-placeholder {
+  color: hsl(0deg, 0%, 98%) !important;
+}
+#dark #addTask:-ms-input-placeholder {
+  color: hsl(0deg, 0%, 98%) !important;
+}
+#dark #addTask::-ms-input-placeholder {
+  color: hsl(0deg, 0%, 98%) !important;
+}
+#dark #addTask::placeholder {
+  color: hsl(0deg, 0%, 98%) !important;
+}
+#dark #addTask,
+#dark .to-do-tasks {
+  background-color: hsl(235deg, 24%, 19%);
+}
+#dark #checkbox {
+  background-color: hsl(235deg, 24%, 19%) !important;
+  border: 1px solid hsl(237deg, 14%, 26%);
+}
+#dark ul li:hover {
+  color: hsl(0deg, 0%, 98%) !important;
+}
+#dark .clear-completed-btn:hover {
+  color: hsl(0deg, 0%, 98%) !important;
+}
+#dark .task h5 {
+  color: hsl(0deg, 0%, 98%);
+}
+#dark .checked .task-check #checkbox {
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(hsl(192deg, 100%, 67%)),
+    to(hsl(280deg, 87%, 65%))
+  );
+  background: linear-gradient(hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
+  content: url(../images/icon-check.svg);
+  padding: 4px;
+}
+#dark .checked .task-text h5 {
+  color: hsl(234deg, 11%, 52%);
+  text-decoration: line-through;
+}
+#dark .task-veiwed-mobile {
+  background-color: hsl(235deg, 24%, 19%);
+}
+
+.checked .task-check #checkbox {
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(hsl(192deg, 100%, 67%)),
+    to(hsl(280deg, 87%, 65%))
+  );
+  background: linear-gradient(hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
+  content: url(../images/icon-check.svg);
+  padding: 4px;
+}
+.checked .task-text h5 {
+  color: hsl(234deg, 11%, 52%);
+  text-decoration: line-through;
+}
+
+@media only screen and (max-width: 600px) {
+  footer {
+    font-size: 14px;
+  }
+
+  .body {
+    font-size: 16px;
+  }
+  .to-do-container {
+    width: 90%;
+  }
+  .task-veiwed {
+    display: none;
+  }
+  .task-veiwed-mobile {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .to-do-container {
+    width: 80%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .to-do-container {
+    width: 70%;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .to-do-container {
+    width: 50%;
+  }
+}

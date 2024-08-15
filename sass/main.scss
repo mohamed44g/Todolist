@@ -1,0 +1,331 @@
+$Primary: hsl(220, 98%, 61%);
+
+//Light Theme
+$Light-Gray: hsl(0, 0%, 98%);
+$Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+$Light-Grayish-Blue: hsl(233, 11%, 84%);
+$Dark-Grayish-Blue: hsl(236, 9%, 61%);
+$Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+
+//Dark Theme
+$Very-Dark-Blue: hsl(235, 21%, 11%);
+$Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+$Light-Grayish-Blue: hsl(234, 39%, 85%);
+$Light-Grayish-Blue-hover: hsl(236, 33%, 92%);
+$Dark-Grayish-Blue: hsl(234, 11%, 52%);
+$Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+$Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
+
+//fonts
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+@mixin flex($direction) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+}
+
+.background {
+  width: 100%;
+  height: 300px;
+  background-image: url(../images/bg-desktop-light.jpg);
+  position: absolute;
+  z-index: -1;
+
+  .background-overlay {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    z-index: 1;
+    background-color: black;
+    opacity: 0.3;
+  }
+}
+
+.tasks-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.to-do-container {
+  @include flex(column);
+  position: absolute;
+  top: 100px;
+  z-index: 1;
+  width: 35%;
+
+  .to-do-header {
+    @include flex(row);
+    justify-content: space-between;
+    width: 100%;
+
+    h1 {
+      color: $Light-Gray;
+      text-transform: uppercase;
+      letter-spacing: 12px;
+      font-weight: 700;
+    }
+  }
+
+  .Theme-toggle {
+    align-self: center;
+    cursor: pointer;
+
+    img {
+      width: 30px;
+    }
+  }
+
+  .add-task {
+    margin-top: 35px;
+
+    #addTask {
+      width: 100%;
+      height: 60px;
+      border-color: $Light-Gray;
+      border-radius: 5px;
+      padding: 15px;
+      color: black;
+      font-size: 20px;
+    }
+  }
+
+  .to-do-tasks {
+    @include flex(column);
+    height: fit-content;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 5px;
+
+    .task {
+      @include flex(row);
+      width: 100%;
+      padding: 20px;
+      border-bottom: 1px solid rgba($Dark-Grayish-Blue, $alpha: 0.3);
+      cursor: pointer;
+
+      .task-check {
+        position: relative;
+        flex-grow: 1;
+
+        #checkbox {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 25px;
+          width: 25px;
+          border-radius: 12.5px;
+          border: 1px solid rgba($color: #333, $alpha: 0.3);
+          cursor: pointer;
+
+          &:hover {
+            border: 1px solid $Primary;
+          }
+        }
+      }
+
+      .task-text {
+        flex-grow: 10;
+
+        h5 {
+          color: $Dark-Grayish-Blue;
+          font-weight: 400;
+        }
+      }
+
+      .delete-task {
+        visibility: hidden;
+      }
+
+      &:hover .delete-task {
+        visibility: visible;
+      }
+    }
+
+    .to-do-tasks-footer {
+      @include flex(row);
+      justify-content: space-between;
+      padding: 20px;
+
+      .task-left,
+      .clear-completed-btn,
+      .task-veiwed li {
+        color: $Dark-Grayish-Blue;
+      }
+
+      .task-veiwed {
+        list-style: none;
+      }
+
+      .task-veiwed li {
+        display: inline-block;
+        font-weight: 500;
+        &:hover {
+          color: black;
+        }
+      }
+
+      .task-veiwed li:nth-of-type(2) {
+        margin-right: 15px;
+        margin-left: 15px;
+      }
+    }
+  }
+
+  .task-veiwed-mobile {
+    li {
+      display: inline-block;
+      color: $Dark-Grayish-Blue;
+      font-weight: 700;
+    }
+
+    li:nth-of-type(2) {
+      margin-right: 15px;
+      margin-left: 15px;
+    }
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    border-radius: 5 px;
+    display: none;
+    list-style: none;
+  }
+}
+
+.veiw-active {
+  color: $Primary !important;
+}
+
+footer {
+  position: absolute;
+  bottom: 0px;
+  background-color: #333;
+  width: 100%;
+  height: 50px;
+
+  .attribution {
+    color: white;
+    padding-top: 15px;
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+//theme
+#dark {
+  .background {
+    background-image: url(../images/bg-desktop-dark.jpg);
+  }
+  background-color: $Very-Dark-Blue;
+
+  #addTask {
+    border-color: transparent !important;
+    color: $Light-Gray !important;
+    &::placeholder {
+      color: $Light-Gray !important;
+    }
+  }
+
+  #addTask,
+  .to-do-tasks {
+    background-color: $Very-Dark-Desaturated-Blue;
+  }
+
+  #checkbox {
+    background-color: $Very-Dark-Desaturated-Blue !important;
+    border: 1px solid $Very-Dark-Grayish-Blue;
+  }
+
+  ul li:hover {
+    color: $Light-Gray !important;
+  }
+
+  .clear-completed-btn:hover {
+    color: $Light-Gray !important;
+  }
+
+  .task {
+    h5 {
+      color: $Light-Gray;
+    }
+  }
+
+  .checked {
+    .task-check {
+      #checkbox {
+        background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+        content: url(../images/icon-check.svg);
+        padding: 4px;
+      }
+    }
+
+    .task-text h5 {
+      color: $Dark-Grayish-Blue;
+      text-decoration: line-through;
+    }
+  }
+
+  .task-veiwed-mobile {
+    background-color: $Very-Dark-Desaturated-Blue;
+  }
+}
+
+.checked {
+  .task-check {
+    #checkbox {
+      background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+      content: url(../images/icon-check.svg);
+      padding: 4px;
+    }
+  }
+
+  .task-text h5 {
+    color: $Dark-Grayish-Blue;
+    text-decoration: line-through;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .to-do-container {
+    width: 90%;
+  }
+  .task-veiwed {
+    display: none;
+  }
+
+  .task-veiwed-mobile {
+    display: flex !important;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .to-do-container {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .to-do-container {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .to-do-container {
+    width: 50%;
+  }
+}
